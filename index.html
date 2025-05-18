@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Notepad</title>
+</head>
+
+<body>
+    <h1>Welcome to Flask-Electron GUI</h1>
+    <button id="fetch-data">Fetch Data from Flask</button>
+    <p id="response"></p>
+
+    <script>
+        document.getElementById('fetch-data').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/');
+                const data = await response.text();
+                document.getElementById('response').innerText = data;
+            } catch (error) {
+                document.getElementById('response').innerText = 'Error fetching data';
+            }
+        });
+    </script>
+</body>
+
+</html>
